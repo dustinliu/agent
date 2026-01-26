@@ -70,6 +70,18 @@ Acceptance Criteria:
 ## UI/UX Design
 *Link to Figma or describe the UI flow.*
 
+### UX Flow
+
+```mermaid
+stateDiagram-v2
+    [*] --> Login
+    Login --> Dashboard : Success
+    Login --> Login : Failure
+    Dashboard --> DetailView : Click Item
+    DetailView --> EditModal : Click Edit
+    EditModal --> DetailView : Save/Cancel
+```
+
 ## Analytics & Metrics
 *What metrics will we track to measure success?*
 *   Metric 1

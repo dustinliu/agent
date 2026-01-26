@@ -130,12 +130,18 @@ Response:
 
 ## Frontend Design
 
-### Pages
+### State Management
 
-| Page | Description | Key Interactions |
-|------|-------------|------------------|
-| Home | Landing page with feature overview | Link to login/signup |
-| Dashboard | User main workspace | CRUD operations on resources |
+- **Global State**: [e.g., User Session, Theme, Notifications]
+- **Local State**: [e.g., Form inputs, Modal visibility]
+- **Server State**: [e.g., React Query / SWR for API data]
+
+### Pages & Routes
+
+| Route | Component | Description | Key Interactions |
+|-------|-----------|-------------|------------------|
+| / | Home | Landing page | Link to login/signup |
+| /dashboard | Dashboard | Main workspace | View usage stats |
 
 ### Technology & Communication
 
@@ -143,6 +149,7 @@ Response:
 - **Styling**: [e.g., Tailwind CSS, Vanilla CSS]
 - **State Management**: [e.g., Store, Local State]
 - **API Communication**: [e.g., Fetch API, Axios]
+
 
 ## Directory Structure
 

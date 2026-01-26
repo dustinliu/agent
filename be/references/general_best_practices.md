@@ -2,7 +2,7 @@
 
 ## Library-First Approach
 - **Always prioritize existing solutions**:
-  - Check package registries (e.g., npm) for available libraries.
+  - Check package registries (e.g., npm) or web search for available libraries.
   - Evaluate existing Service/SaaS solutions.
   - Consider third-party APIs for general functionality.
 - **Use libraries instead of custom utilities**: For example, use `cockatiel` to handle retry logic instead of writing it yourself.
