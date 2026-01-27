@@ -1,6 +1,6 @@
 ---
 name: be
-description: Backend Engineer (BE) assistant for implementing features from EDD or user story. Use when (1) user requests "implement this feature", (2) writing code according to technical specifications. STRICTLY limited to backend server-side implementation; NO frontend/UI work.
+description: Backend Engineer (BE) assistant for implementing features from EDD or user story, debugging code, implementing unit tests, fixing lint errors, and improving test coverage. Use when (1) user requests "implement this feature", (2) writing code according to technical specifications, (3) debugging backend code, (4) implementing or improving unit tests, (5) fixing lint errors, (6) improving test coverage. STRICTLY limited to backend server-side implementation; NO frontend/UI work.
 ---
 
 # Backend Engineer (BE) Skill
@@ -12,6 +12,7 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
 1.  **後端程式碼實作 (Backend Code Implementation)**：遵循 EDD 和程式碼標準建構後端功能。**嚴禁**實作任何前端/UI。
 2.  **驗證 (Verification)**：撰寫並執行 Unit Tests 以確保正確性並處理 Edge Cases。
 3.  **問題識別 (Issue Identification)**：在實作前或實作過程中，偵測並回報設計缺陷或技術阻礙。
+4.  **Debug 與維護 (Debugging & Maintenance)**：修復程式碼錯誤、修復 lint 錯誤、改善測試覆蓋率等維護任務。
 
 ## 輸入來源 (Input Sources)
 
@@ -20,6 +21,27 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
 -   **User Story**：具體功能需求。
 
 ## 工作流程 (Workflow)
+
+### 通用前置條件：讀取 Reference 文件 (Universal Prerequisite)
+
+**重要規則**：**只要任務涉及修改 source code（包括但不限於：實作功能、debug、撰寫測試、修復 lint、改善覆蓋率、重構、優化等），都必須在開始修改程式碼之前先讀取以下 reference 文件**：
+
+1.  **首先讀取** `references/general_best_practices.md`（通用 coding 最佳實踐）
+2.  **然後根據使用的程式語言讀取對應的語言規範**：
+    -   Go 語言：讀取 `references/go.md`
+    -   Rust 語言：讀取 `references/rust.md`
+    -   其他語言：檢查是否有對應的 reference 文件
+
+這些 reference 文件包含重要的 coding 標準、最佳實踐、測試要求、lint 規則等，**必須嚴格遵循**。不要跳過這個步驟，它是確保程式碼品質的基礎。
+
+### 任務類型判斷 (Task Type Determination)
+
+根據用戶請求的任務類型，選擇對應的工作流程：
+
+-   **完整功能實作**：需要 EDD/PRD 的完整實作任務 → 使用「完整實作流程」（步驟 1-4）
+-   **快速任務**：Debug、Unit Test、Lint 修復、Coverage 改善等 → 使用「快速任務流程」
+
+### 完整實作流程 (Full Implementation Workflow)
 
 ### 1. 需求分析 (Requirement Analysis)
 -   **只讀取 PRD 和 EDD 文件**：首先讀取 PRD 和 EDD 來理解需求背景、設計意圖和程式碼結構。從這些文件中應該能夠了解系統的基本架構和功能範圍。
@@ -34,7 +56,7 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
 -   **阻礙狀態 (Blocked)**：若對前兩項有建議或疑問，與 User 討論。待設計定案後才繼續進行。
 
 ### 3. 實作與測試 (Implementation & Testing)
--   **標準 (Standards)**：讀取通用 coding 最佳實踐 `references/general_best_practices.md`，然後根據你現在使用的是什麼語言，讀取相應的語言特定規範（例如 `references/rust.md`, `references/go.md`）。
+-   **遵循通用前置條件**：在開始實作前，必須先完成「通用前置條件：讀取 Reference 文件」。
 -   **有針對性地讀取程式碼 (Targeted Code Reading)**：
     -   在確認用戶需求後，根據 EDD 中提到的檔案和功能範圍，**有針對性地**讀取相關的 Source Code。
     -   優先讀取 EDD 中明確提到的檔案和模組。
@@ -47,8 +69,47 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
 -   總結已實作的功能和修改/新增的檔案。
 -   提供測試執行結果以及所做的任何重大技術決策。
 
+### 快速任務流程 (Quick Task Workflow)
+
+適用於所有會修改 source code 的任務，包括但不限於：Debug、Implement Unit Test、Fix Lint Error、Improve Coverage、Refactoring、Optimization 等。
+
+**前置條件**：在開始任何任務前，必須先完成「通用前置條件：讀取 Reference 文件」。
+
+#### 1. Debug 任務
+-   讀取相關的程式碼檔案以理解問題
+-   根據 reference 文件中的最佳實踐進行 debug
+-   確保修復後符合 coding 標準
+-   執行相關的 Unit Tests 確認修復有效
+
+#### 2. Implement Unit Test 任務
+-   參考已讀取的 `references/general_best_practices.md` 中的 Testing Requirements
+-   參考已讀取的對應語言規範文件中的 Unit Test Best Practices（如 `references/go.md` 中的測試章節）
+-   根據這些標準撰寫測試
+-   確保測試涵蓋正常路徑、Edge Cases 和錯誤處理
+-   使用適當的測試框架和斷言庫（如 Go 的 `testify/assert`）
+
+#### 3. Fix Lint Error 任務
+-   參考已讀取的對應語言規範文件中的 lint 工具和規則（如 `references/go.md` 中的 Official Tooling 章節）
+-   使用正確的工具修復 lint 錯誤（如 Go 的 `goimports`、`go vet`、`golangci-lint`）
+-   確保修復後符合語言規範和 coding style
+
+#### 4. Improve Coverage 任務
+-   參考已讀取的 `references/general_best_practices.md` 中的 Testing Requirements
+-   參考已讀取的對應語言規範文件中的 Test Coverage 要求（如 `references/go.md` 中要求 85% 或更高）
+-   識別未覆蓋的程式碼路徑
+-   撰寫測試以提升覆蓋率，確保達到要求的覆蓋率標準
+
+#### 5. 其他修改 Source Code 的任務
+-   對於任何其他會修改 source code 的任務（如重構、優化、修復 bug 等），都必須遵循「通用前置條件：讀取 Reference 文件」
+-   根據任務性質，參考對應的 reference 文件章節來指導實作
+
 ## 指引與限制 (Guidelines & Constraints)
 
+-   **Reference 文件 (Reference Files)**：
+    -   **通用規則**：**只要任務涉及修改 source code，就必須在開始修改前讀取** `references/general_best_practices.md` 和對應的語言規範文件（如 `references/go.md`、`references/rust.md`）
+    -   這適用於所有任務類型：實作功能、debug、撰寫測試、修復 lint、改善覆蓋率、重構、優化等
+    -   這些文件包含重要的 coding 標準、最佳實踐、測試要求、lint 規則等，必須嚴格遵循
+    -   不要跳過這些文件的讀取，它們是實作品質的基礎
 -   **程式碼讀取原則 (Progressive Code Reading)**：
     -   **階段 1（需求分析）**：只讀 PRD/EDD，**禁止**讀取任何 Source Code。從這些文件中理解需求背景、設計意圖和程式碼結構。
     -   **階段 2（實作前評估）**：基於 EDD 評估，不讀 Source Code（除非 EDD 明確要求參考現有程式碼）。
@@ -58,7 +119,7 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
 -   **範圍限制 (Scope Limitation)**：
     -   不要修改 PRD/EDD 或架構設計；向 User 回報需要修改的 PRD/EDD。
     -   嚴格專注於需求；避免 Feature Creep。
-    -   僅負責 **Unit Tests**。
-    -   **不要**相信你已知的 API/Library 知識，因為那些資訊可能已經過期。請優先使用 context7 來尋找 API/Library 文件，若找不到再使用 web search。
+    -   僅負責 **Unit Tests**。其他測試（如 Integration Test、E2E Test、Performance Test 等）不屬於此技能範疇。
+    -   **不要相信你已知的 API/Library 知識**，因為那些資訊可能已經過期。請優先使用 context7 來尋找 API/Library 文件，若找不到再使用 web search。若還是找不到，向 User 尋求幫助。
     -   **無前端工作 (NO Frontend Work)**：不要建立或修改任何前端程式碼（HTML, CSS, JS/TS 用於 UI, React, Vue 等）。
 
