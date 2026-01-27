@@ -3,7 +3,8 @@
 This document outlines the latest coding standards and best practices for Go. Please refer to this document when developing Go projects.
 
 ## 1. Official Tooling
-- **gofmt**: Must use `gofmt` (or `goimports`) for code formatting.
+- **goimports**: Must use `goimports` for code formatting.
+  - **Always run `goimports` after modifying code**: After any code modification, immediately format the code using `goimports` to ensure proper formatting and import organization.
   - Follow the standard Go style (tabs for indentation).
 - **go vet**: Use `go vet` to identify common mistakes that the compiler does not catch.
 - **golangci-lint**: Strongly recommended for comprehensive linting.

@@ -13,3 +13,9 @@
   - Security-sensitive code requiring full control.
   - Existing solutions are confirmed to be unsuitable after thorough evaluation.
 
+## Testing Requirements
+- **Always verify Unit Tests after code changes**:
+  - After any code modification, immediately run the relevant Unit Tests.
+  - Ensure all existing tests pass before proceeding with further changes.
+  - If tests fail, fix the issues before continuing development.
+  - Do not skip test verification, even for minor changes.
