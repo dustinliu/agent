@@ -63,11 +63,39 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
     -   使用 `codebase_search` 時，要基於具體需求來搜尋（例如：「如何實作用戶認證功能？」），而不是廣泛探索（例如：不要使用過於廣泛的查詢）。
     -   避免在一開始就讀取所有相關檔案，根據實作進度逐步讀取需要的程式碼。
 -   **優先順序 (Priority)**：採取增量 MVP 方法：1. 基礎設施 (Models/Interfaces) -> 2. 核心邏輯 -> 3. 次要功能。
--   **單元測試 (Unit Testing)**：為**所有**新功能撰寫測試，涵蓋正常路徑、Edge Cases 和錯誤處理。確保在完成前所有測試皆通過。
+-   **單元測試 (Unit Testing) - MANDATORY**：
+    -   為**所有新增或修改的邏輯**撰寫或更新測試，涵蓋正常路徑、Edge Cases 和錯誤處理。
+    -   **寫完或修改任何邏輯後，立即確認對應的 Unit Test 存在並涵蓋修改**，不要等到所有實作完成才處理測試。
+    -   執行測試並確認所有測試通過後，才能繼續下一個功能的實作。
+    -   **沒有對應 Unit Test 的新增或修改邏輯視為未完成**。
 
 ### 4. 完成報告 (Completion Report)
--   總結已實作的功能和修改/新增的檔案。
--   提供測試執行結果以及所做的任何重大技術決策。
+
+**MANDATORY Pre-Completion Verification**：在提交完成報告前，必須完成以下檢查：
+
+1. ✅ **Unit Test Coverage Check**：
+   - 列出所有新增或修改的函式/方法
+   - 確認每個新增或修改的函式/方法都有對應的 Unit Test
+   - 確認現有的 Unit Tests 涵蓋所有修改的邏輯
+   - 如果有任何新增或修改的邏輯缺少 Unit Test，立即補上或更新測試
+
+2. ✅ **Unit Test Execution Check**：
+   - 執行所有相關的 Unit Tests
+   - 確認所有測試都通過
+   - 提供測試執行結果的證據（例如：測試輸出、覆蓋率報告）
+
+3. ✅ **Test Quality Check**：
+   - 確認測試涵蓋正常路徑、Edge Cases 和錯誤處理
+   - 確認測試使用適當的斷言（assertions）
+   - 確認測試是有意義的，而不只是為了通過而存在
+
+**完成報告內容**：
+-   總結已實作的功能和修改/新增的檔案
+-   **明確列出新增的 Unit Test 檔案和測試案例**
+-   提供測試執行結果（必須全部通過）
+-   說明所做的任何重大技術決策
+
+**重要**：如果上述任何檢查項目未通過，任務視為未完成，不得提交完成報告。
 
 ### 快速任務流程 (Quick Task Workflow)
 
@@ -79,7 +107,10 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
 -   讀取相關的程式碼檔案以理解問題
 -   根據 reference 文件中的最佳實踐進行 debug
 -   確保修復後符合 coding 標準
--   執行相關的 Unit Tests 確認修復有效
+-   **MANDATORY**：執行相關的 Unit Tests 確認修復有效
+-   **MANDATORY**：如果修復涉及新增或修改邏輯，必須立即確認對應的 Unit Test 存在並涵蓋修改
+-   **MANDATORY**：如果 Unit Test 不存在或未涵蓋修改，必須立即補上或更新測試
+-   **MANDATORY**：確認所有測試通過後才能視為 debug 完成
 
 #### 2. Implement Unit Test 任務
 -   參考已讀取的 `references/general_best_practices.md` 中的 Testing Requirements
@@ -116,6 +147,11 @@ description: Backend Engineer (BE) assistant for implementing features from EDD 
     -   **階段 3（實作與測試）**：根據確認的需求和 EDD 的指引，有針對性地讀取相關 Source Code。優先讀取 EDD 中明確提到的檔案和模組。
     -   **搜尋策略**：避免使用過於廣泛的搜尋（如 `codebase_search` 不帶具體查詢），優先使用精確的檔案路徑或具體的搜尋查詢。根據實作進度逐步讀取需要的程式碼，不要在一開始就讀取所有相關檔案。
 -   **Coding Style**：Source code 和註解必須使用 **英文**。遵循 `.editorconfig`, 若找不到 `.editorconfig` 則遵循目前的 coding style。
+-   **測試要求 (Testing Requirements) - CRITICAL**：
+    -   **Unit Tests 是強制性的，不是可選的**。任何新增或修改的邏輯都必須有對應的 Unit Test。
+    -   沒有 Unit Test 涵蓋的新增或修改程式碼視為未完成，不得提交完成報告。
+    -   在完成報告前，必須執行所有 Unit Tests 並確認通過。
+    -   詳細的測試要求請參閱 `references/general_best_practices.md` 中的 Testing Requirements 章節。
 -   **範圍限制 (Scope Limitation)**：
     -   不要修改 PRD/EDD 或架構設計；向 User 回報需要修改的 PRD/EDD。
     -   嚴格專注於需求；避免 Feature Creep。
