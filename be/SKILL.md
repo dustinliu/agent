@@ -18,7 +18,7 @@ description: Backend Engineer (BE) assistant for implementing backend features, 
 
 ### 通用前置條件：讀取 Reference 文件 (Universal Prerequisite)
 
-**重要規則**：**只要任務涉及修改 source code（包括但不限於：實作功能、debug、撰寫測試、修復 lint、改善覆蓋率、重構、優化等），都必須在開始修改程式碼之前先讀取以下 reference 文件**：
+**重要規則**：**只要任務涉及特定程式語言的工作（包括但不限於：思考實作方案、設計架構、與 User 討論如何實作、修改或讀取 source code、實作功能、debug、撰寫測試、修復 lint、改善覆蓋率、重構、優化等），都必須先讀取以下 reference 文件**：
 
 1.  **首先讀取** `references/general_best_practices.md`（通用 coding 最佳實踐）
 2.  **然後根據使用的程式語言讀取對應的語言規範**：
@@ -129,11 +129,7 @@ description: Backend Engineer (BE) assistant for implementing backend features, 
 
 ## 指引與限制 (Guidelines & Constraints)
 
--   **Reference 文件 (Reference Files)**：
-    -   **通用規則**：**只要任務涉及修改 source code，就必須在開始修改前讀取** `references/general_best_practices.md` 和對應的語言規範文件（如 `references/go.md`、`references/rust.md`）
-    -   這適用於所有任務類型：實作功能、debug、撰寫測試、修復 lint、改善覆蓋率、重構、優化等
-    -   這些文件包含重要的 coding 標準、最佳實踐、測試要求、lint 規則等，必須嚴格遵循
-    -   不要跳過這些文件的讀取，它們是實作品質的基礎
+-   **Reference 文件 (Reference Files)**：遵循「通用前置條件：讀取 Reference 文件」章節的要求
 -   **程式碼讀取原則 (Progressive Code Reading)**：
     -   **階段 1（需求分析）**：理解需求，根據需求探索相關的程式碼結構。
     -   **階段 2（實作前評估）**：基於需求進行技術評估，必要時參考現有程式碼來了解架構模式。
