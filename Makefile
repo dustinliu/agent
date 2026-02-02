@@ -1,4 +1,4 @@
-.PHONY: test lint format-check ci clean help
+.PHONY: test lint format-check push clean help
 
 # 預設目標：顯示幫助
 help:
@@ -23,8 +23,10 @@ format-check:
 	uv run ruff format --check .
 
 # 完整 CI 流程：測試 + 靜態分析 + 格式檢查
-ci: test lint format-check
+push: test lint format-check
 	@echo "✅ 所有檢查都通過了！"
+	@echo "Begin to push to agents..."
+	@uv run ./link_skills.py
 
 # 清理生成的檔案
 clean:

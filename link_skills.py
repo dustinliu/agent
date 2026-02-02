@@ -132,7 +132,7 @@ def link_skills(config_path: Path, dry_run: bool = False):
 
     if not isinstance(skills_config[0], str):
         print("❌ 錯誤：skills 必須是字串列表")
-        print("   正確格式：skills = [\"skill1\", \"skill2\"]")
+        print('   正確格式：skills = ["skill1", "skill2"]')
         return
 
     skill_names = skills_config
@@ -243,9 +243,7 @@ def link_skills(config_path: Path, dry_run: bool = False):
                     print(f"  🔄 將更新: {skill_name}")
                 else:
                     # 移除舊目錄並重新複製
-                    if skill_target.is_symlink():
-                        skill_target.unlink()
-                    elif skill_target.is_file():
+                    if skill_target.is_symlink() or skill_target.is_file():
                         skill_target.unlink()
                     elif skill_target.is_dir():
                         shutil.rmtree(skill_target)

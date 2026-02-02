@@ -277,9 +277,7 @@ enabled = true
         assert (ide_skills / "frontend-design").is_dir()
         architect_content = (ide_skills / "architect" / "SKILL.md").read_text()
         assert architect_content == "architect skill"
-        frontend_content = (
-            ide_skills / "frontend-design" / "SKILL.md"
-        ).read_text()
+        frontend_content = (ide_skills / "frontend-design" / "SKILL.md").read_text()
         assert frontend_content == "frontend skill"
 
     def test_warns_when_skill_not_found_in_sources(self, tmp_path, capsys):
@@ -597,9 +595,7 @@ enabled = true
         assert "✨" in captured.out
         assert "完成" in captured.out
 
-    def test_dry_run_shows_correct_statistics_for_new_skills(
-        self, tmp_path, capsys
-    ):
+    def test_dry_run_shows_correct_statistics_for_new_skills(self, tmp_path, capsys):
         """dry-run 模式下，統計數字應該正確反映將要建立的 skills 數量"""
         # 建立 skill 來源
         skills_dir = tmp_path / "skills"
@@ -664,9 +660,7 @@ class TestCoverageGaps:
         captured = capsys.readouterr()
         assert "將覆蓋" in captured.out or "🔄" in captured.out
 
-    def test_new_format_without_sources_paths_shows_warning(
-        self, tmp_path, capsys
-    ):
+    def test_new_format_without_sources_paths_shows_warning(self, tmp_path, capsys):
         """新格式 config 沒有 sources.paths 時顯示警告"""
         config_file = tmp_path / "test.toml"
         config_file.write_text("""
@@ -685,9 +679,7 @@ enabled = true
         captured = capsys.readouterr()
         assert "sources.paths" in captured.out
 
-    def test_empty_or_invalid_skills_format_shows_warning(
-        self, tmp_path, capsys
-    ):
+    def test_empty_or_invalid_skills_format_shows_warning(self, tmp_path, capsys):
         """無效的 skills 格式顯示警告"""
         config_file = tmp_path / "test.toml"
         config_file.write_text("""

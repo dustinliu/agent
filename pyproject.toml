@@ -97,7 +97,7 @@ omit = [
 
 [tool.coverage.report]
 # 設定最低 coverage 門檻
-fail_under = 80
+fail_under = 85
 precision = 2
 exclude_lines = [
     "pragma: no cover",
