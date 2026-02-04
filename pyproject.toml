@@ -10,7 +10,7 @@ authors = [
 dependencies = []
 
 [project.scripts]
-link-skills = "link_skills:main"
+deploy = "deploy:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -18,7 +18,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["."]
-only-include = ["link_skills.py"]
+only-include = ["deploy.py"]
 
 [dependency-groups]
 dev = [

@@ -7,8 +7,8 @@
 ```
 .
 ├── pyproject.toml         # 專案配置（使用 uv 管理）
-├── link_skills.py         # 主要 script
-├── test_link_skills.py    # 測試檔案（37 個測試案例）
+├── deploy.py              # 主要 script
+├── test_deploy.py         # 測試檔案（37 個測試案例）
 ├── skills_config.toml     # Config 檔案範例
 └── README.md
 ```
@@ -72,30 +72,30 @@ enabled = false  # 不啟用
 
 ```bash
 # Dry-run 模式（只查看不實際執行）
-uv run link-skills --dry-run
+uv run deploy --dry-run
 
 # 實際建立連結
-uv run link-skills
+uv run deploy
 
 # 使用自訂 config
-uv run link-skills my_config.toml
+uv run deploy my_config.toml
 ```
 
 **直接執行**（需要先 `uv sync` 或 `pip install -e .`）：
 
 ```bash
 # 如果已經安裝了 package，可以直接使用 console script
-link-skills
-link-skills --dry-run
-link-skills my_config.toml
+deploy
+deploy --dry-run
+deploy my_config.toml
 ```
 
 **使用 Python 直接執行**：
 
 ```bash
-python link_skills.py
-python link_skills.py --dry-run
-python link_skills.py my_config.toml
+python deploy.py
+python deploy.py --dry-run
+python deploy.py my_config.toml
 ```
 
 ## 功能特色
@@ -221,10 +221,10 @@ uv run pytest
 uv run pytest -v
 
 # 執行特定測試檔案
-uv run pytest test_link_skills.py
+uv run pytest test_deploy.py
 
 # 執行特定測試 class
-uv run pytest test_link_skills.py::TestFindSkillInSources
+uv run pytest test_deploy.py::TestFindSkillInSources
 ```
 
 **使用 pytest 直接執行**（需要先安裝）：
@@ -296,10 +296,10 @@ uv sync
 uv run pytest
 
 # 執行測試並顯示覆蓋率
-uv run pytest --cov=link_skills
+uv run pytest --cov=deploy
 
 # 執行 script
-uv run link-skills
+uv run deploy
 
 # 程式碼品質檢查
 uv run ruff check .              # 檢查程式碼

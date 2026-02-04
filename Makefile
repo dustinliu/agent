@@ -26,7 +26,7 @@ format-check:
 push: test lint format-check
 	@echo "✅ 所有檢查都通過了！"
 	@echo "Begin to push to agents..."
-	@uv run ./link_skills.py
+	@uv run ./deploy.py
 
 # 清理生成的檔案
 clean:

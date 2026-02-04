@@ -8,7 +8,6 @@
 
 skills = [
     "architecture",
-    "frontend-design",
     "software-architecture",
     "api-patterns",
     "database-design",
@@ -59,10 +58,10 @@ enabled = true
 # 1. 修改 skills 列表，加入你要複製的 skills
 # 2. 修改 targets，設定各 IDE 的 skills 目錄位置
 # 3. 將要使用的 target 設為 enabled = true
-# 4. 執行: python link_skills.py
+# 4. 執行: python deploy.py
 #
 # Dry-run 模式 (只查看不實際執行):
-#   python link_skills.py --dry-run
+#   python deploy.py --dry-run
 #
 # 使用自訂 config 檔案:
-#   python link_skills.py my_config.toml
+#   python deploy.py my_config.toml

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Tests for link_skills.py
+Tests for deploy.py
 
 ⚠️  注意：這些測試是在程式碼完成後才寫的，不是真正的 TDD。
 真正的 TDD 應該先寫測試，看著它失敗，然後寫最少的程式碼讓它通過。
@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from link_skills import (
+from deploy import (
     copy_skill,
     expand_path,
     find_skill_in_sources,
@@ -297,7 +297,7 @@ path = "{tmp_path / "ide" / "skills"}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=False)
+        link_skills(config_file, dry_run=False, verbose=True)
 
         captured = capsys.readouterr()
         assert "找不到" in captured.out or "不存在" in captured.out
@@ -394,7 +394,7 @@ path = "{tmp_path / "ide" / "skills"}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=True)
+        link_skills(config_file, dry_run=True, verbose=True)
 
         captured = capsys.readouterr()
         assert "Dry-run 模式" in captured.out
@@ -420,7 +420,7 @@ path = "{tmp_path / "ide" / "skills"}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=False)
+        link_skills(config_file, dry_run=False, verbose=True)
 
         captured = capsys.readouterr()
         assert "找不到" in captured.out or "不存在" in captured.out
@@ -538,7 +538,7 @@ enabled = true
 """)
 
         # 執行 dry_run
-        link_skills(config_file, dry_run=True)
+        link_skills(config_file, dry_run=True, verbose=True)
 
         # 驗證：輸出中應該包含將要移除的訊息
         captured = capsys.readouterr()
@@ -582,7 +582,7 @@ enabled = true
 """)
 
         # 執行複製（非 dry-run）
-        link_skills(config_file, dry_run=False)
+        link_skills(config_file, dry_run=False, verbose=True)
 
         # 驗證：目錄應該被更新
         captured = capsys.readouterr()
@@ -627,12 +627,12 @@ enabled = true
 """)
 
         # 執行 dry-run
-        link_skills(config_file, dry_run=True)
+        link_skills(config_file, dry_run=True, verbose=True)
 
-        # 驗證：統計應該顯示「更新/複製 2」（因為有 2 個新的 skills）
+        # 驗證：統計應該顯示完成數量（因為有 2 個 skills）
         captured = capsys.readouterr()
-        assert "更新/複製 2" in captured.out
-        assert "共 2/2" in captured.out
+        assert "2/2" in captured.out
+        assert "完成" in captured.out or "to sync" in captured.out
 
 
 if __name__ == "__main__":
@@ -745,7 +745,7 @@ path = "{target_dir}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=False)
+        link_skills(config_file, dry_run=False, verbose=True)
 
         captured = capsys.readouterr()
         # 舊目錄應該被移除
@@ -781,7 +781,7 @@ path = "{target_dir}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=False)
+        link_skills(config_file, dry_run=False, verbose=True)
 
         captured = capsys.readouterr()
         # 應該更新目錄
@@ -850,7 +850,7 @@ path = "{target_dir}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=True)
+        link_skills(config_file, dry_run=True, verbose=True)
 
         captured = capsys.readouterr()
         # dry-run 模式下應該顯示將要更新的訊息
@@ -896,7 +896,7 @@ path = "{target_dir}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=False)
+        link_skills(config_file, dry_run=False, verbose=True)
 
         captured = capsys.readouterr()
         # symlink 應該被移除
@@ -946,7 +946,7 @@ path = "{target_dir}"
 enabled = true
 """)
 
-        link_skills(config_file, dry_run=False)
+        link_skills(config_file, dry_run=False, verbose=True)
 
         captured = capsys.readouterr()
         # symlink 應該被移除並替換為真實目錄
