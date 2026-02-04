@@ -33,5 +33,6 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# claude-ai
-.claude/
+# claude local settings
+.claude/settings.local.json
+

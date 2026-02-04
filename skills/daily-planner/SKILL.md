@@ -26,10 +26,13 @@ All tickets are managed through **Jira**. Use Jira MCP tools to:
 - Add comments and worklogs
 
 
-
 ## Document Management
 
-All documents are managed through **Obsidian**. Use Obsidian MCP tools to:
+All documents are managed through **Obsidian**.
+
+**IMPORTANT:** Always invoke the `obsidian-markdown` skill when creating or editing Obsidian notes to ensure proper Obsidian Flavored Markdown syntax (wikilinks, callouts, frontmatter, etc.).
+
+Use Obsidian MCP tools to:
 
 - Search and retrieve notes
 - Create and append content to notes
