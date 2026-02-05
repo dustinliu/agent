@@ -48,7 +48,7 @@ Design and document backend systems. This skill covers: requirements analysis �
 ┌─────────────────────────────────────────────────────────────────┐
 │                    3. WRITE EDD                                 │
 │  Document design decisions and trade-offs                       │
-│  → See: references/edd-template.md                              │
+│  → See: assets/edd-template.md                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -77,7 +77,7 @@ Key decisions:
 
 ## Phase 3: Write EDD
 
-Document the design formally. Use the [EDD template](references/edd-template.md).
+Document the design formally. Use the [EDD template](assets/edd-template.md).
 
 Key sections:
 - Problem & Goals
@@ -104,5 +104,5 @@ Best practices:
 
 ## References
 
-- [EDD Template](references/edd-template.md) - Engineering Design Document structure
+- [EDD Template](assets/edd-template.md) - Engineering Design Document structure
 - `/architecture` skill - System design guidance

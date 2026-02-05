@@ -24,13 +24,15 @@ Implement backend systems following EDD specifications with TDD approach.
 ```
 1. UNDERSTAND        → Read EDD + User Story, clarify requirements
         ↓
-2. PLAN              → Create implementation plan with task order
+2. OPENAPI SPEC      → Expand EDD API design into OpenAPI 3.x spec
         ↓
-3. ARCHITECTURE DOC  → Design and document code architecture
+3. PLAN              → Create implementation plan with task order
         ↓
-4. IMPLEMENT (TDD)   → For each task: Code → Test → Verify → Next
+4. ARCHITECTURE DOC  → Design and document code architecture
         ↓
-5. FINALIZE          → Verify coverage, update docs, cleanup
+5. IMPLEMENT (TDD)   → For each task: Code → Test → Verify → Next
+        ↓
+6. FINALIZE          → Verify coverage, update docs, cleanup
 ```
 
 ## Phase 1: Understand
@@ -41,7 +43,16 @@ Read and analyze (as provided):
 
 **Clarify all ambiguities before proceeding.** EDD and PRD are useful sources for answers, but always confirm understanding with user if any doubt remains.
 
-## Phase 2: Implementation Plan
+## Phase 2: Generate OpenAPI Spec
+
+Convert the EDD's concise API design into a full OpenAPI 3.x specification.
+
+- Input: API endpoints from EDD's Technical Design section
+- Output: `docs/openapi.yaml`
+- Expand each endpoint into complete OpenAPI format: parameters, request/response schemas, error codes, examples
+- This spec becomes the authoritative API contract for implementation
+
+## Phase 3: Implementation Plan
 
 Create `docs/implementation-plan.md` using [template](assets/implementation-plan-template.md).
 
@@ -53,7 +64,7 @@ Determine optimal implementation order based on dependencies. Common patterns:
 - Include checkbox for each task to track progress
 - Delete after implementation complete
 
-## Phase 3: Code Architecture Document
+## Phase 4: Code Architecture Document
 
 Create `docs/codebase-guide.md` using [template](assets/codebase-guide-template.md).
 
@@ -68,7 +79,7 @@ This document helps future developers understand the codebase without reading al
 
 **Avoid duplicating EDD content.** EDD covers system design decisions; this document focuses on code-level structure and patterns.
 
-## Phase 4: Implement (TDD)
+## Phase 5: Implement (TDD)
 
 Use `/test-driven-development` and `/software-architecture` skills for implementation.
 
@@ -102,7 +113,7 @@ Follow strict TDD for each task in the implementation plan:
 - Every function must have corresponding unit test
 - Run full test suite after each task completion
 
-## Phase 5: Finalize
+## Phase 6: Finalize
 
 1. **Verify test coverage** > 85%
 2. **Update `docs/codebase-guide.md`** if architecture changed during implementation
