@@ -56,16 +56,6 @@ project-root/
 - **Key files:**
   - `file1.py` - [Description]
 
-## Data Flow
-
-[Describe how data flows through the system for a typical request]
-
-```
-Request → Router → Service → Repository → Database
-                      ↓
-                 Response
-```
-
 ## Configuration
 
 - **Environment variables:** `config/.env`

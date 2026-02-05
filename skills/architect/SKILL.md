@@ -82,8 +82,7 @@ Document the design formally. Use the [EDD template](references/edd-template.md)
 Key sections:
 1. Problem & Goals
 2. Proposed Solution (architecture, API, DB)
-3. Testing Strategy
-4. Open Questions
+3. Open Questions
 
 Best practices:
 - Keep it concise - readers should understand in < 10 minutes
