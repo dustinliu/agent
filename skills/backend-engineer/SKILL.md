@@ -105,11 +105,18 @@ Follow strict TDD for each task in the implementation plan:
 ├─────────────────────────────────────────────────┤
 │  5. Mark task complete                          │
 │     - Update checkbox in implementation-plan.md │
+├─────────────────────────────────────────────────┤
+│  6. Wait for user review                        │
+│     - Report what was implemented and tested    │
+│     - STOP and wait for user approval           │
+│     - Do NOT proceed to next task until user    │
+│       explicitly confirms to continue           │
 └─────────────────────────────────────────────────┘
 ```
 
 **Rules:**
 - Never proceed to next task until current task's tests pass
+- Never proceed to next task without explicit user approval
 - Every function must have corresponding unit test
 - Run full test suite after each task completion
 
