@@ -3,14 +3,27 @@ name: architect
 description: >
   Backend system design and documentation workflow. Covers API design, database schema,
   and EDD (Engineering Design Document) writing. Use when designing backend systems or APIs,
-  writing or reviewing EDDs, or planning database schemas. Does NOT handle implementation
-  or coding. Triggers include "design an API", "write an EDD", "database schema design",
-  "system architecture".
+  writing or reviewing EDDs, or planning database schemas. This skill is DESIGN ONLY - it
+  does NOT write implementation code (Golang, JavaScript, Python, etc.). For implementation,
+  use the backend-engineer skill. Triggers include "design an API", "write an EDD",
+  "database schema design", "system architecture".
 ---
 
 # Architect
 
 Design and document backend systems. This skill covers: requirements analysis → system design → EDD.
+
+## Scope
+
+**Do:**
+- API contract design (endpoints, request/response schemas)
+- Database schema design (tables, relationships, indexes)
+- Architecture diagrams (Mermaid)
+- Technical decision documentation
+
+**Do NOT:**
+- Write implementation code (Golang, JavaScript, Python, etc.)
+- For implementation, hand off to `backend-engineer` skill
 
 **IMPORTANT: Never assume. Always ask.**
 - If there are ANY questions about requirements or design decisions, discuss with the user first. Do not make assumptions about what the user wants.
