@@ -87,10 +87,20 @@ Key sections:
 
 Best practices:
 - Keep it concise - readers should understand in < 10 minutes
-- Use diagrams (Mermaid) for architecture
 - Be specific - include actual API contracts, not just descriptions
 - Address trade-offs - show alternatives considered
 - Define success metrics
+
+### Mermaid Diagrams
+
+**Must use Mermaid for:**
+- High-Level Architecture (system diagrams, component interactions)
+- Database Schema (erDiagram)
+- Data flow
+
+**Use when complex:**
+- API call sequences (sequence diagram) - when flow involves multiple services
+- Rollout decision flow - when multiple conditional branches exist
 
 ## References
 
