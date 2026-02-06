@@ -12,28 +12,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Install dependencies
 uv sync
 
-# Run all tests (with coverage report, minimum 85% required)
-uv run pytest
-
-# Run a specific test class
-uv run pytest test_deploy.py::TestFindSkillInSources
-
-# Run a specific test
-uv run pytest test_deploy.py::TestFindSkillInSources::test_finds_skill_in_first_source
-
-# Lint
-uv run ruff check .
-
-# Format check
-uv run ruff format --check .
-
-# Full CI pipeline (test + lint + format + deploy)
-make push
-
-# Deploy skills to IDE directories
-uv run deploy            # or: python deploy.py
-uv run deploy --dry-run  # preview only
-uv run deploy -v         # verbose output
+# makefile targets
+make test          # Run tests with coverage
+make lint          # Run ruff linting
+make format-check  # Check code formatting
+make push          # Full CI pipeline + deploy
+make clean         # Clean generated files
 ```
 
 ## Architecture
@@ -45,17 +29,10 @@ Single-module Python project using `uv` for dependency management:
 - `skills_config.toml` — configuration: skill names list, source directory paths, and target IDE directories with enable/disable flags.
 - `skills/` — local skill definitions. Each skill is a directory with `SKILL.md` and optional `assets/` and `references/` subdirectories.
 
-### Key Data Flow
-
-1. `load_config()` reads `skills_config.toml`
-2. `expand_path()` resolves `~` and relative paths (relative to config file directory)
-3. `find_skill_in_sources()` searches skill names across multiple source directories (first match wins)
-4. For each enabled target IDE: clean stale skills not in config, then `shutil.copytree()` each skill
-
 ## Conventions
 
 - Python >=3.11 required (uses `tomllib` from stdlib)
-- all the skills I mentioned to be modified should be in the project root directory `skills/`, not in the ~/.claude/skills/ or .claude/skills/ or ~/.antigravity/skills/ directories.
+- all the skills I want to  modifiy located in the project root directory `skills/`
 - Linting: ruff with rules F, E, W, I, N, UP, B, C4, SIM
 - Formatting: ruff format (double quotes, spaces, unix line endings)
 - Coverage threshold: 85% (configured in `pyproject.toml`)

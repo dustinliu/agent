@@ -28,14 +28,12 @@ Implement backend systems following EDD specifications with TDD approach.
         ↓  ↻ iterate until user confirms
 3. ARCHITECTURE DOC  → Design and document code architecture
         ↓  ↻ iterate until user confirms
-4. PLAN              → Create implementation plan with task order
-        ↓  ↻ iterate until user confirms
-5. IMPLEMENT (TDD)   → For each task: Code → Test → Verify → Next
+4. IMPLEMENT (TDD)   → For each task: Code → Test → Verify → Next
         ↓
-6. FINALIZE          → Verify coverage, update docs, cleanup
+5. FINALIZE          → Verify coverage, update docs, cleanup
 ```
 
-**Phase 1–4 iteration loop:** Complete the phase → present result to user → STOP and wait for confirmation. If user gives feedback, discuss to reach agreement → apply changes → present again → repeat until user says OK. Only then proceed to the next phase.
+**Phase 1–3 iteration loop:** Complete the phase → present result to user → STOP and wait for confirmation. If user gives feedback, discuss to reach agreement → apply changes → present again → repeat until user says OK. Only then proceed to the next phase.
 
 ## Phase 1: Understand
 
@@ -75,37 +73,29 @@ This document helps future developers understand the codebase without reading al
 
 **User review gate:** Present the architecture document and STOP. Wait for user confirmation before proceeding to Phase 4.
 
-## Phase 4: Implementation Plan
+## Phase 4: Implement (TDD)
 
-Create `docs/implementation-plan.md` using [template](assets/implementation-plan-template.md).
+Use `/test-driven-development` and `/software-architecture` skills for implementation.
+
+**Language-specific guidance:** Check `references/<language>.md` if available (e.g., `references/go.md`, `references/rust.md`).
+
+### Implementation Strategy
 
 **Vertical slice approach:** Organize tasks by feature/endpoint, not by layer. Each task is a complete feature across all layers (model → repository → service → handler).
 
-For each task, include:
+For each task, identify:
 - **Layers** involved
 - **Dependencies** on other tasks
-- **Acceptance Criteria** with checkboxes — break down each feature into specific, testable behaviors. Each AC maps to one or more test cases in Phase 5's TDD cycle. Include:
+- **Acceptance Criteria** — break down each feature into specific, testable behaviors. Each AC maps to one or more test cases in the TDD cycle. Include:
   - Success cases (happy path)
   - Error/edge cases (validation failures, not found, conflicts)
   - Side effects (e.g., password hashed before storage, audit log created)
 
 Start with a **Task 0: Project Setup** for initialization (project structure, dependencies, config, DB connection).
 
-**Important:**
-- Include checkbox for each task and each AC to track progress
-- Delete after implementation complete
-
-**User review gate:** Present the plan and STOP. Wait for explicit user approval before proceeding to Phase 5.
-
-## Phase 5: Implement (TDD)
-
-Use `/test-driven-development` and `/software-architecture` skills for implementation.
-
-**Language-specific guidance:** Check `references/<language>.md` if available (e.g., `references/go.md`, `references/rust.md`).
-
 ### Per-AC TDD cycle
 
-For each **feature (task)** in the implementation plan, iterate through each **acceptance criteria (AC)**:
+For each **feature (task)**, iterate through each **acceptance criteria (AC)**:
 
 ```mermaid
 flowchart TD
@@ -114,35 +104,25 @@ flowchart TD
     RED --> GREEN["2. GREEN — Write minimal code to pass test"]
     GREEN --> REFACTOR["3. REFACTOR — Clean up while tests stay green"]
     REFACTOR --> VERIFY["4. VERIFY — Run ALL tests, ensure all pass<br/>Check coverage >= 85%"]
-    VERIFY --> REVIEW{"5. USER REVIEW<br/>Present result, STOP and wait"}
-    REVIEW -- "User has feedback" --> DISCUSS["Discuss → fix → present again"]
-    DISCUSS --> REVIEW
-    REVIEW -- "User confirms OK" --> MARK["6. Mark AC checkbox done"]
-    MARK --> AC_CHECK{"More ACs in this feature?"}
+    VERIFY --> AC_CHECK{"More ACs in this feature?"}
     AC_CHECK -- Yes --> AC
-    AC_CHECK -- No --> FEATURE["Mark feature checkbox done"]
-    FEATURE --> FEAT_CHECK{"More features?"}
+    AC_CHECK -- No --> FEAT_CHECK{"More features?"}
     FEAT_CHECK -- Yes --> START
     FEAT_CHECK -- No --> DONE([All features complete])
 ```
 
 **Rules:**
-- Never proceed to next AC without explicit user approval
 - Every AC maps to one or more test cases
 - Run full test suite after each AC completion
-- Update implementation-plan.md checkboxes as each AC and feature completes
 
-## Phase 6: Finalize
+## Phase 5: Finalize
 
 1. **Final test run** - all tests must pass
 2. **Verify test coverage** > 85%
-3. **Update `docs/codebase-guide.md`** if architecture changed during implementation
+3. **Update `docs/codebase-guide.md`** if codebase changed during implementation
 4. **Update `README.md`** using [template](assets/readme-template.md) — ensure quick start guide, setup instructions, and documentation links are current
-5. **Delete `docs/implementation-plan.md`** — no longer needed after implementation complete
 
 **User review gate:** Present the final state (test results, coverage, updated docs) and STOP. Wait for user confirmation.
 
 ## References
-
-- [Implementation Plan Template](assets/implementation-plan-template.md)
 - [Codebase Guide Template](assets/codebase-guide-template.md)
