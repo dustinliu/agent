@@ -18,7 +18,12 @@ description: Generate daily work reports and manage daily planning. Integrates w
 
 ## 工單管理
 
-所有工單都通過 **Jira** 管理。使用 Jira MCP 工具
+所有工單都通過 **Jira** 管理。使用 Jira MCP 工具來：
+
+- 搜尋和檢索議題
+- 建立新工單
+- 更新工單狀態和轉換
+- 新增評論和工時日誌
 
 ## 專案管理
 
@@ -43,7 +48,7 @@ description: Generate daily work reports and manage daily planning. Integrates w
 
 ## 會議紀錄
 
-所有專案都通過 **Obsidian** 管理。
+所有會議紀錄都通過 **Obsidian** 管理。
 
 - **路徑模式**：`Work/meetings/[meeting].md`
 - **範本**：`assets/meeting_minutes.md`
