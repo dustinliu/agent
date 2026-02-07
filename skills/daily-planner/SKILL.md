@@ -1,6 +1,6 @@
 ---
 name: daily-planner
-description: Generate daily work reports and manage daily planning. Integrates with Things MCP (todos), Jira MCP (tickets), and Obsidian MCP (documents). Use when the user asks to plan their day, generate a work report, check today's tasks, or review open tickets. Triggers include phrases like "plan my day", "what's on my plate today", "daily report", "today's tasks", or "my open tickets".
+description: "Generate daily work reports, manage daily planning, and create meeting minutes. Integrates with Things MCP (todos), Jira MCP (tickets), and Obsidian MCP (documents). Use when the user asks to: (1) Plan their day or generate a work report, (2) Create or review meeting minutes, (3) Check today's tasks or review open tickets. Triggers include phrases like 'plan my day', 'what's on my plate today', 'daily report', 'today's tasks', 'my open tickets', 'create meeting minutes', 'meeting notes', 'record the meeting', or 'what happened in the meeting'."
 ---
 
 # 每日規劃
@@ -50,7 +50,7 @@ description: Generate daily work reports and manage daily planning. Integrates w
 
 所有會議紀錄都通過 **Obsidian** 管理。
 
-- **路徑模式**：`Work/meetings/[meeting].md`
+- **路徑模式**：`Work/meetings/YYYY/MM/[meeting title].md`
 - **範本**：`assets/meeting_minutes.md`
 
 **範本屬性**
@@ -59,6 +59,48 @@ description: Generate daily work reports and manage daily planning. Integrates w
 |------|------|------|
 | `date` | 會議日期 | `2025-01-15` |
 | `participants` | 參加者 | ["Dustin", "Ryan Lee"] |
+| `tags` | 會議分類標籤 | ["project", "decision", "action-item"] |
+
+### 建議 Tags 流程
+
+建立會議紀錄時，根據會議內容建議合適的 tags：
+- **專案相關**：project name、project initials
+- **會議類型**：standup、sync、planning、retro、review
+- **決策相關**：decision、approved、rejected
+- **行動相關**：action-item、follow-up、deadline
+- **優先度**：urgent、high-priority、blocker
+
+等使用者確認後，將選定的 tags 加入到 tags 屬性中。
+
+### 建立會議紀錄
+
+按序依次處理會議紀錄，每個步驟完成後等待使用者確認：
+
+#### 第一步：收集基本資訊
+
+詢問使用者以下資訊：
+- 會議名稱/標題
+- 會議日期（預設為今日）
+- 參與者列表
+
+#### 第二步：收集會議內容
+
+詢問使用者會議的主要內容：
+- 會議目的/背景
+- 討論的議題
+- 達成的決策
+- 行動項（action items）及負責人
+- 後續事項
+
+#### 第三步：建議 Tags
+
+根據會議內容，建議合適的 tags（參考上方「建議 Tags 流程」），展示建議清單給使用者選擇。
+
+#### 第四步：建立 Obsidian 筆記
+
+使用 `obsidian-markdown` skill 確保正確的 Obsidian Flavored Markdown 語法，在 `Work/meetings/YYYY/MM/` 路徑下建立會議紀錄。
+
+根據 `assets/meeting_minutes.md` 範本結構填入收集的資訊。
 
 ## 工作
 
