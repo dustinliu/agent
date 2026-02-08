@@ -1,6 +1,6 @@
 ---
 name: secretary
-description: "Manage Jira tickets, Todo tasks, Obsidian documents, and generate daily work reports. Integrates with Jira MCP (tickets), Things MCP (todos), and Obsidian MCP (documents). Use when the user asks to: (1) Manage or review Jira tickets, (2) Check and manage Todo tasks, (3) Organize and edit Obsidian documents, (4) Generate daily status reports. Triggers include phrases like 'generate daily report', 'my open tickets', 'check jira tickets', 'today's tasks', 'my todos', 'manage documents', 'update obsidian', 'daily status', or 'ticket status'."
+description: "Manage Obsidian notes (projects, daily notes, meeting minutes) and optionally generate daily reports. Integrates with Jira MCP, Things MCP, and Obsidian MCP. Use when the user asks to: (1) Create, update, or organize project notes, (2) Update or review daily notes, (3) Create meeting minutes, (4) Manage Obsidian documents, or (5) Generate a daily report (only when explicitly requested). Triggers include phrases like 'update my project note', 'create meeting minutes', 'add to my daily note', 'organize my Obsidian', 'manage documents', or 'generate daily report'."
 ---
 
 # Secretary
@@ -38,7 +38,9 @@ description: "Manage Jira tickets, Todo tasks, Obsidian documents, and generate 
 
 編輯 Obsidian 文件時，始終使用 `obsidian-markdown` skill 確保正確的語法。
 
-## 產生每日報告
+## 產生每日報告（可選）
+
+**只有在使用者明確要求時，才執行此工作流程。** 例如："Generate today's daily report" 或 "Create a daily report"。
 
 ### 工作流程
 
