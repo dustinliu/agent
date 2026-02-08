@@ -15,10 +15,9 @@ Create or update Product Requirements Documents.
 
 **Workflow:**
 1. Gather context about the product/feature
-2. Identify target users and their pain points
-3. Define goals and success metrics
-4. List functional and non-functional requirements
-5. Output structured PRD in Markdown
+2. Define goals and objectives
+3. List functional and non-functional requirements
+4. Output structured PRD in Markdown
 
 **Template:** See [references/prd_template.md](references/prd_template.md) for the complete PRD structure.
 
@@ -69,7 +68,6 @@ This separation ensures:
 ## Output Guidelines
 
 - Output all documents in Markdown format
-- Use tables for structured data (requirements, metrics, risks)
 - Include clear priority levels (P0 = must have, P1 = should have, P2 = nice to have)
 - Write acceptance criteria in Given-When-Then format
 - Keep language specific and measurable; avoid vague terms

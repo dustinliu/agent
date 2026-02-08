@@ -8,21 +8,9 @@ Brief description of the product or feature (2-3 sentences).
 - Who experiences this problem?
 - What is the impact of not solving it?
 
-## Goals & Success Metrics
-### Goals
-- Primary goal
-- Secondary goals
-
-### Success Metrics
-| Metric | Current | Target | Timeline |
-|--------|---------|--------|----------|
-| [metric name] | [value] | [value] | [timeframe] |
-
-## User Personas
-### [Persona Name]
-- **Role**: [description]
-- **Pain Points**: [list]
-- **Needs**: [list]
+## Goals & Objectives
+- [Primary goal]
+- [Secondary goals]
 
 ## Non-Functional Requirements
 | ID | Requirement | Priority | Notes |

@@ -104,6 +104,8 @@ When a story is too large, split by:
 
 User stories must describe **user needs**, not **technical solutions**.
 
+**Important:** The PRD focuses on **WHAT** needs to be built and **WHY**. Technical implementation details (HOW) should be documented separately in technical design documents, not in product requirements.
+
 ### ❌ Bad Examples (Technical)
 - "As a user, I want data stored in PostgreSQL so queries are fast"
 - "As a user, I want the app to use WebSocket for real-time updates"
@@ -114,7 +116,12 @@ User stories must describe **user needs**, not **technical solutions**.
 - "As a user, I want to see new messages appear without refreshing the page"
 - "As a user, I want to browse large result sets without long loading times"
 
+### Technical Stories Note
+
+Even for **internal tools**, user stories should describe user-facing improvements or capabilities, not implementation details. Technical work (refactoring, infrastructure improvements, performance optimization) should be tracked separately in technical documentation or a separate technical backlog, not mixed into product requirements.
+
 ### Remember
 - **Users don't care about technology** - they care about outcomes
 - **Technical stories are for engineering** - not product backlogs
 - **Acceptance criteria describe behavior** - not implementation
+- **Separation of concerns** - Keep product PRDs and technical documentation distinct
